@@ -1,3 +1,6 @@
+// Load jobs first
+loadJobs();
+
 // Admin login
 function adminLogin() {
     const username = document.getElementById('adminUsername').value;
@@ -8,7 +11,7 @@ function adminLogin() {
         showDashboard();
         loadAdminJobs();
     } else {
-        alert('Invalid username or password. Demo credentials: admin / admin123');
+        alert('Invalid username or password. Demo: admin / admin123');
     }
 }
 
@@ -79,11 +82,11 @@ function loadAdminJobs() {
 
     adminJobsList.innerHTML = jobs.map(job => `
         <div class="job-card">
-            <h3>${escapeHtml(job.title)}</h3>
-            <div class="company">${escapeHtml(job.company)}</div>
+            <h3>${job.title}</h3>
+            <p class="company">${job.company}</p>
             <div class="meta">
-                <div class="meta-item">📍 ${escapeHtml(job.location)}</div>
-                <div class="meta-item">💼 ${escapeHtml(job.category)}</div>
+                <span class="meta-item">${job.location}</span>
+                <span class="meta-item">${job.category}</span>
             </div>
             <div class="actions">
                 <button class="btn btn-success" onclick="editJob(${job.id})">Edit</button>
@@ -115,34 +118,8 @@ function deleteJob(jobId) {
     }
 }
 
-// Escape HTML to prevent XSS
-function escapeHtml(text) {
-    const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-    };
-    return text.replace(/[&<>"']/g, m => map[m]);
-}
-
-// Save jobs to localStorage
-function saveJobs() {
-    localStorage.setItem('jobs', JSON.stringify(jobs));
-}
-
-// Load jobs from localStorage
-function loadJobsFromStorage() {
-    const savedJobs = localStorage.getItem('jobs');
-    if (savedJobs) {
-        jobs = JSON.parse(savedJobs);
-    }
-}
-
-// Check if admin is logged in on page load
+// Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-    loadJobsFromStorage();
     const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
     if (isLoggedIn) {
         showDashboard();

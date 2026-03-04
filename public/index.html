@@ -3,78 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINKED OUT - Job Advertisement Platform</title>
+    <title>LINKED OUT - Job Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1>LINKED OUT</h1>
-        </div>
-    </header>
-
     <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="jobs.html">Jobs</a></li>
-            <li><a href="admin.html">Admin</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">LINKED OUT</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="jobs.html" class="nav-link">Browse Jobs</a></li>
+                <li><a href="admin.html" class="nav-link">Admin</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h2>Find Your Dream Job</h2>
-            <p>Explore thousands of job opportunities from top companies across Kenya. Connect with employers and advance your career.</p>
-            <a href="jobs.html" class="btn btn-primary">View Available Jobs</a>
+            <h1>Find Your Dream Job</h1>
+            <p>Explore amazing career opportunities with LINKED OUT</p>
+            <a href="jobs.html" class="btn btn-primary">View All Jobs</a>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main>
+    <!-- Featured Jobs Section -->
+    <section class="featured-section">
         <div class="container">
-            <h2>About LINKED OUT</h2>
-            <p>LINKED OUT is Kenya's premier online job advertisement and search platform. We connect job seekers with employers across various industries including Technology, Finance, Education, and more.</p>
-            
-            <h3>Why Choose LINKED OUT?</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Access to thousands of job listings from top companies</li>
-                <li>Easy-to-use search and filter functionality</li>
-                <li>Detailed job descriptions and company information</li>
-                <li>Direct contact with employers</li>
-                <li>Regular updates with new job opportunities</li>
-            </ul>
+            <h2>Featured Jobs</h2>
+            <div class="grid-3" id="featuredJobs">
+                <!-- Jobs loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
 
-            <h3>Featured Categories</h3>
-            <div class="featured-categories">
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h2>Browse by Category</h2>
+            <div class="categories">
                 <div class="category-card">
                     <h3>Technology</h3>
-                    <p>Software engineers, developers, data scientists, and IT professionals.</p>
+                    <p>Software engineers, developers, IT professionals</p>
                 </div>
                 <div class="category-card">
                     <h3>Finance</h3>
-                    <p>Financial analysts, accountants, investment managers, and banking professionals.</p>
-                </div>
-                <div class="category-card">
-                    <h3>Education</h3>
-                    <p>Teachers, lecturers, trainers, and educational administrators.</p>
+                    <p>Banking, finance, investment professionals</p>
                 </div>
                 <div class="category-card">
                     <h3>Healthcare</h3>
-                    <p>Doctors, nurses, pharmacists, and healthcare administrators.</p>
+                    <p>Medical, nursing, healthcare professionals</p>
+                </div>
+                <div class="category-card">
+                    <h3>Education</h3>
+                    <p>Teachers, lecturers, educational administrators</p>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 LINKED OUT. All rights reserved. A Kenyan Job Advertisement Platform.</p>
+    <footer class="footer">
+        <p>&copy; 2024 LINKED OUT. All rights reserved.</p>
     </footer>
 
     <script src="data.js"></script>
-    <script src="app.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>

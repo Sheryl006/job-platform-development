@@ -7,32 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1>LINKED OUT</h1>
-        </div>
-    </header>
-
     <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="jobs.html">Jobs</a></li>
-            <li><a href="admin.html">Admin</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">LINKED OUT</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="jobs.html" class="nav-link">Browse Jobs</a></li>
+                <li><a href="admin.html" class="nav-link">Admin</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Main Content -->
-    <main>
-        <div id="jobDetail" class="job-detail">
-            <!-- Job details will be loaded here -->
+    <section class="featured-section">
+        <div class="container">
+            <div id="jobDetail" class="job-detail">
+                <!-- Job details loaded by JavaScript -->
+            </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 LINKED OUT. All rights reserved. A Kenyan Job Advertisement Platform.</p>
+    <footer class="footer">
+        <p>&copy; 2024 LINKED OUT. All rights reserved.</p>
     </footer>
 
     <script src="data.js"></script>

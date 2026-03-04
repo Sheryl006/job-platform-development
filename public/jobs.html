@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Listings - LINKED OUT</title>
+    <title>Browse Jobs - LINKED OUT</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1>LINKED OUT</h1>
-        </div>
-    </header>
-
     <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="jobs.html" class="active">Jobs</a></li>
-            <li><a href="admin.html">Admin</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">LINKED OUT</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="jobs.html" class="nav-link active">Browse Jobs</a></li>
+                <li><a href="admin.html" class="nav-link">Admin</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Main Content -->
-    <main>
+    <section class="featured-section">
         <div class="container">
-            <h2>Job Listings</h2>
+            <h2>All Job Listings</h2>
 
             <!-- Filter Section -->
             <div class="filter-section">
@@ -43,7 +39,7 @@
 
             <!-- Jobs Container -->
             <div id="jobsList" class="jobs-container">
-                <!-- Jobs will be loaded here by JavaScript -->
+                <!-- Jobs loaded by JavaScript -->
             </div>
 
             <!-- No Results Message -->
@@ -51,11 +47,11 @@
                 <p>No jobs found in this category.</p>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 LINKED OUT. All rights reserved. A Kenyan Job Advertisement Platform.</p>
+    <footer class="footer">
+        <p>&copy; 2024 LINKED OUT. All rights reserved.</p>
     </footer>
 
     <script src="data.js"></script>

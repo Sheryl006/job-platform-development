@@ -1,52 +1,29 @@
+// Load jobs from localStorage
+loadJobs();
+
 // Display featured jobs on home page
 function displayFeaturedJobs() {
-    const featuredJobsContainer = document.getElementById('featured-jobs');
+    const container = document.getElementById('featuredJobs');
+    if (!container) return;
+
+    const featured = jobs.slice(0, 3);
     
-    if (!featuredJobsContainer) return;
-
-    const featuredJobs = jobs.slice(0, 6);
-
-    featuredJobsContainer.innerHTML = featuredJobs.map(job => `
-        <div class="job-card" onclick="goToJobDetail(${job.id})">
-            <h3>${escapeHtml(job.title)}</h3>
-            <div class="company">${escapeHtml(job.company)}</div>
+    container.innerHTML = featured.map(job => `
+        <div class="job-card">
+            <h3>${job.title}</h3>
+            <p class="company">${job.company}</p>
             <div class="meta">
-                <div class="meta-item">📍 ${escapeHtml(job.location)}</div>
-                <div class="meta-item">💼 ${escapeHtml(job.category)}</div>
+                <span class="meta-item">${job.location}</span>
+                <span class="meta-item">${job.category}</span>
+                <span class="meta-item">${job.salary}</span>
             </div>
-            <div class="salary">${escapeHtml(job.salary)}</div>
+            <p class="description">${job.description.substring(0, 100)}...</p>
+            <div class="actions">
+                <a href="job-detail.html?id=${job.id}" class="btn btn-primary">View Details</a>
+            </div>
         </div>
     `).join('');
 }
 
-// Navigate to job detail page
-function goToJobDetail(jobId) {
-    localStorage.setItem('selectedJobId', jobId);
-    window.location.href = 'job-detail.html';
-}
-
-// Escape HTML to prevent XSS
-function escapeHtml(text) {
-    const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-    };
-    return text.replace(/[&<>"']/g, m => map[m]);
-}
-
-// Load jobs from localStorage
-function loadJobsFromStorage() {
-    const savedJobs = localStorage.getItem('jobs');
-    if (savedJobs) {
-        jobs = JSON.parse(savedJobs);
-    }
-}
-
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    loadJobsFromStorage();
-    displayFeaturedJobs();
-});
+document.addEventListener('DOMContentLoaded', displayFeaturedJobs);

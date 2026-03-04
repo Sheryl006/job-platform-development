@@ -1,4 +1,7 @@
-// Display jobs on jobs.html
+// Load jobs from localStorage
+loadJobs();
+
+// Display jobs
 function displayJobs(jobsToDisplay) {
     const jobsList = document.getElementById('jobsList');
     const noResults = document.getElementById('noResults');
@@ -11,16 +14,18 @@ function displayJobs(jobsToDisplay) {
 
     noResults.style.display = 'none';
     jobsList.innerHTML = jobsToDisplay.map(job => `
-        <div class="job-card" onclick="goToJobDetail(${job.id})">
-            <h3>${escapeHtml(job.title)}</h3>
-            <div class="company">${escapeHtml(job.company)}</div>
+        <div class="job-card">
+            <h3>${job.title}</h3>
+            <p class="company">${job.company}</p>
             <div class="meta">
-                <div class="meta-item">📍 ${escapeHtml(job.location)}</div>
-                <div class="meta-item">💼 ${escapeHtml(job.category)}</div>
-                <div class="meta-item">💰 ${escapeHtml(job.salary)}</div>
+                <span class="meta-item">${job.location}</span>
+                <span class="meta-item">${job.category}</span>
+                <span class="meta-item">${job.salary}</span>
             </div>
-            <div class="description">${escapeHtml(job.description.substring(0, 150))}...</div>
-            <button class="btn btn-primary" onclick="event.stopPropagation();">View Details</button>
+            <p class="description">${job.description.substring(0, 120)}...</p>
+            <div class="actions">
+                <a href="job-detail.html?id=${job.id}" class="btn btn-primary">View Details</a>
+            </div>
         </div>
     `).join('');
 }
@@ -28,44 +33,17 @@ function displayJobs(jobsToDisplay) {
 // Filter jobs by category
 function filterJobs() {
     const selectedCategory = document.getElementById('categoryFilter').value;
-    let filteredJobs = jobs;
+    let filtered = jobs;
 
     if (selectedCategory) {
-        filteredJobs = jobs.filter(job => job.category === selectedCategory);
+        filtered = jobs.filter(job => job.category === selectedCategory);
     }
 
-    displayJobs(filteredJobs);
-}
-
-// Navigate to job detail page
-function goToJobDetail(jobId) {
-    localStorage.setItem('selectedJobId', jobId);
-    window.location.href = 'job-detail.html';
-}
-
-// Escape HTML to prevent XSS
-function escapeHtml(text) {
-    const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-    };
-    return text.replace(/[&<>"']/g, m => map[m]);
-}
-
-// Load jobs from localStorage
-function loadJobsFromStorage() {
-    const savedJobs = localStorage.getItem('jobs');
-    if (savedJobs) {
-        jobs = JSON.parse(savedJobs);
-    }
+    displayJobs(filtered);
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-    loadJobsFromStorage();
     const categoryFilter = document.getElementById('categoryFilter');
     if (categoryFilter) {
         categoryFilter.addEventListener('change', filterJobs);
