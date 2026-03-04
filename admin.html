@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - LINKED OUT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">LINKED OUT</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="admin.html" class="active">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="admin-section">
+        <div class="container">
+            <div id="loginForm" class="login-container">
+                <h1>Admin Login</h1>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <p class="demo-creds">Demo: admin / admin123</p>
+            </div>
+
+            <div id="dashboard" class="dashboard" style="display:none;">
+                <div class="dashboard-header">
+                    <h1>Admin Dashboard</h1>
+                    <button onclick="handleLogout()" class="btn btn-logout">Logout</button>
+                </div>
+
+                <div class="dashboard-content">
+                    <button onclick="showAddForm()" class="btn btn-add">+ Add New Job</button>
+
+                    <div id="addJobForm" class="add-job-form" style="display:none;">
+                        <h2>Add New Job</h2>
+                        <form onsubmit="handleAddJob(event)">
+                            <div class="form-group">
+                                <label for="jobTitle">Job Title:</label>
+                                <input type="text" id="jobTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company:</label>
+                                <input type="text" id="company" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location:</label>
+                                <input type="text" id="location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="salary">Salary:</label>
+                                <input type="text" id="salary" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category:</label>
+                                <select id="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Retail">Retail</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <textarea id="description" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Add Job</button>
+                            <button type="button" class="btn btn-cancel" onclick="hideAddForm()">Cancel</button>
+                        </form>
+                    </div>
+
+                    <h2>All Jobs</h2>
+                    <table id="jobsTable" class="jobs-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Company</th>
+                                <th>Location</th>
+                                <th>Salary</th>
+                                <th>Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Jobs will be inserted here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 LINKED OUT. All rights reserved.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
