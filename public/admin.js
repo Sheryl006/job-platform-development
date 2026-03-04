@@ -127,8 +127,22 @@ function escapeHtml(text) {
     return text.replace(/[&<>"']/g, m => map[m]);
 }
 
+// Save jobs to localStorage
+function saveJobs() {
+    localStorage.setItem('jobs', JSON.stringify(jobs));
+}
+
+// Load jobs from localStorage
+function loadJobsFromStorage() {
+    const savedJobs = localStorage.getItem('jobs');
+    if (savedJobs) {
+        jobs = JSON.parse(savedJobs);
+    }
+}
+
 // Check if admin is logged in on page load
 document.addEventListener('DOMContentLoaded', function() {
+    loadJobsFromStorage();
     const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
     if (isLoggedIn) {
         showDashboard();

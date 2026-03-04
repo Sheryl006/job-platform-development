@@ -55,8 +55,17 @@ function escapeHtml(text) {
     return text.replace(/[&<>"']/g, m => map[m]);
 }
 
+// Load jobs from localStorage
+function loadJobsFromStorage() {
+    const savedJobs = localStorage.getItem('jobs');
+    if (savedJobs) {
+        jobs = JSON.parse(savedJobs);
+    }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
+    loadJobsFromStorage();
     const categoryFilter = document.getElementById('categoryFilter');
     if (categoryFilter) {
         categoryFilter.addEventListener('change', filterJobs);
