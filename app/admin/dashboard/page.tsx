@@ -278,7 +278,7 @@ export default function AdminDashboardPage() {
                   {uniqueCompanies.map((company) => {
                     const isSuspended = suspendedAccounts.includes(company)
                     const companyJobs = activeJobs.filter(job => job.company === company)
-                    const companyApps = applications.filter(app => activeJobs.find(j => j.id === app.job_id && j.company === company))
+                    const companyApps = applications.filter(app => activeJobs.find(j => j.id === app.jobId && j.company === company))
                     
                     return (
                       <tr key={company} className={`border-b border-border hover:bg-secondary/30 transition-colors ${isSuspended ? 'opacity-60' : ''}`}>
@@ -348,7 +348,7 @@ export default function AdminDashboardPage() {
                   </thead>
                   <tbody>
                     {activeJobs.slice(0, 10).map((job) => {
-                      const jobApps = applications.filter(app => app.job_id === job.id).length
+                      const jobApps = applications.filter(app => app.jobId === job.id).length
                       return (
                         <tr key={job.id} className="border-b border-border hover:bg-secondary/30 transition-colors">
                           <td className="py-4 px-4 text-foreground font-medium">{job.title}</td>
